@@ -46,6 +46,19 @@ VI. Build Product Screen
 
 VII. Create NodeJs Server
 
+1. run npm init in root folder
+2. Update package.json set type: module
+3. Add .js to imports
+4. npm install express
+5. create server.js
+6. add start command as node backend/server.js
+7. require express
+8. create route for / return backend is ready.
+9. move products.js from frontend to backend
+10. create route for /api/products
+11. return products
+12. run npm start
+
 VIII. Load Products From Backend
 Inside the frontend folder, Add in the json package under name
 "proxy":"http://127.0.0.1:5000"
@@ -62,6 +75,29 @@ Inside the frontend folder, Add in the json package under name
 10. use them in HomeScreen
 
 Axios is a library to send to send Ajax request to server.
-In frontend folder, run npm i axios.
+In frontend folder, run npm i axios. Axiois is one of the ways to send http request (remember Angela Yu's course)
 
 useEffect()
+
+IX. Install ESlint For Code Linting
+
+1. install VSCode eslint extension
+2. npm install -D eslint from root project (-D : is for development only, not production)
+3. run: ./node_modules/.bin/eslint --init
+4. Create ./frontend/.env
+5. In the .env file Add SKIP_PREFLIGHT_CHECK=true (since we'll be using eslint in root folder we need to disable preflight-check in the frontend folder)
+6. cd frontend & npm start (Make sure Node is also running)
+
+X. Add Redux to Home Screen
+We'll use redux to get products from backend. It also controls the state of our app
+
+1. npm install redux react-redux (cd frontend)
+2. Create store.js in frontend to create a redux store(initial estate & reducer)
+3. initState= {products:[]}
+4. reducer = (state, action) => switch LOAD_PRODUCTS: {products: action.payload}
+5. export default createStore(reducer, initState)
+6. Edit HomeScreen.js
+7. shopName = useSelector(state=>state.products)
+8. const dispatch = useDispatch()
+9. useEffect(()=>dispatch({type: LOAD_PRODUCTS, payload: data})
+10. Add store to index.js

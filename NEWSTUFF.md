@@ -75,3 +75,26 @@ return (
 </div>
 );
 }
+
+VIII. ESLINT
+To write cleaner codes
+
+IX. Redux
+To manage the state of our app
+we create a file store.js inside frontend
+we define an initial state & reducer (reducer is function that takes 2 params which returns the data from data.js)
+we then define a store which takes 2 params (initialState & reducer) using the createStore function from redux and we export store
+
+In the index.js we wrap the <App> with <Provider store={store}><App/></Provider> importing {Provider} from react-redux
+
+download the redux dev tools in chrome
+
+In frontend: npm i redux-thunk to make it possible to send Ajax request in our redux action
+const store = createStore(reducer, initialState, compose(applyMiddleware()));
+
+In HomeScreen, we'll fetch data from backend. Instead of having Ajax request in components, we're gonna move it into action.
+To create an action we must create some constants for that action.
+
+- src/constants/productConstants.js
+- Define 3 [product] constants in that folder constants (the async nature of the ajax request requires 3 constants)
+- Then define [product] actions to get list of products in a new folder inside src called "actions" : src/actions/productActions.js
